@@ -9,6 +9,7 @@ namespace EmployeeManagement
     class Employee
     {
         
+        
             
 
         private String name;
@@ -22,8 +23,6 @@ namespace EmployeeManagement
             this.salary = salary;
             this.date_joined = date_joined;
             this.skills = skills;
-          
-            ;
         }
         //printing the name
         public void Get_name()
@@ -57,7 +56,7 @@ namespace EmployeeManagement
         //printing all the information with ToString()
         public override string ToString()
         {
-            return $"Name: {name}\n Salary: {salary}\n Date joined {date_joined}";
+            return $"Name: {name}\n Salary: {salary}\n Date joined {date_joined}\n Skills: {skills}";
         }
         //method for adding skills
         public void Add_skills(int x, String skill)
