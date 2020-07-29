@@ -3,93 +3,106 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace EmployeeManagement
 {
     class Employee
     {
-        
-        
-            
-
         private String name;
-        private int salary;
+        private int salary, num_skills = 0;
         private string date_joined;
-        private String[] skills= new String[10];
+        private String[] skills = new String[10];
 
-        public Employee(String name, int salary, string date_joined, String[] skills)
+
+        private Profile profile;
+
+        public Employee(string name, int salary, string date_joined, Profile profile)
         {
             this.name = name;
             this.salary = salary;
             this.date_joined = date_joined;
-            this.skills = skills;
+            this.profile = profile;
         }
+
         //printing the name
         public void Get_name()
         {
             Console.WriteLine(name);
         }
-        //printing the salary
-        public void Get_salary()
-        {
+
+            //printing the salary
+         public void Get_salary()
+         {
             Console.WriteLine(salary);
-        }
-        //printing the date he/she joined
-        public void Get_date_joined()
-        {
+         }
+
+         //printing the date he/she joined
+         public void Get_date_joined()
+         {
             Console.WriteLine(date_joined);
-        }
-        //method fot raising the salary
-        public void Pay_raise(int raise)
-        {
+         }
+
+         //method fot raising the salary
+         public void Pay_raise(int raise)
+         {
             salary += raise;
-        }
-        //printing the  skills
-        public void Get_skills()
-        {
+         }
+
+         //printing the  skills
+         public void Get_skills()
+         {
             Console.WriteLine("This are the skills:");
             foreach (String i in skills)
             {
                 Console.WriteLine(i);
             }
-        }
-        //printing all the information with ToString()
-        public override string ToString()
-        {
+         }
+
+         //printing all the information with ToString()
+         public override string ToString()
+         {
             return $"Name: {name}\n Salary: {salary}\n Date joined {date_joined}\n Skills: {skills}";
-        }
+         }
+
         //method for adding skills
-        public void Add_skills(int x, String skill)
+        public void AddSkill(string skill)
         {
-            skills[x] = skill;
+            if (num_skills == skills.Length)
+            {
+                Console.WriteLine("Error, employee already has 10 skills.");
+            }
+            else
+            {
+                skills[num_skills++] = skill;
+            }
         }
 
         // method for removing skills
+        public void Remove_skill( String skill)
+        {
+
+
+           // skills.Remove(skill);
+        }
 
         // methon for altering skills
         public void Alter_skills(int x, String skill)
-        {
+         {
+            
             skills[x] = skill;
-        }
-        //add name
-        public void Add_name(String new_name)
+         }
+
+        public void ChangePassword(string currentPassword, string newPassword)
         {
-            name = new_name;
+            profile.ChangePassword(currentPassword, newPassword);
         }
 
-        //add salary
-        public void Add_salary(int new_salary)
-        {
-            salary = new_salary;
-        }
-        
-        //add date joined
-        public void Add_date_jooined(String new_date)
-        {
-            date_joined = new_date;
-        }
 
-        
+
+
+
     }
 
-}
+    }
+

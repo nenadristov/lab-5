@@ -11,102 +11,85 @@ namespace EmployeeManagement
 {
     class Program
     {
-        struct Profile
-        {
-            public String username { get; set; }
-            public String password { get; set; }
-            public String email { get; set; }
-
-            public void Create_profile(String username, String password, String email)
-            {
-                this.username = username;
-                this.password = password;
-                this.email = email;
-            }
-            public static Profile Create(String username, String password, String email)
-            {
-                return new Profile();
-            }
-            public void Change_password(String old_password, String new_password)
-            {
-                if (old_password == password)
-                {
-                    password = new_password;
-                    Console.WriteLine("Password has been successfully changed!");
-                }
-            }
-            public override string ToString()
-            {
-                return $"Username: {username}\n email: {email}\n Password: CLASSIFIED";
-            }
-        }
+        
         static void Main(string[] args)
         {
-
-            String name, date;
-            String[] skills = new String[10];
-            
-            int salary;
-            
-            
-            //gathering informations for the employee and creating an object
+            //gathering information for the employee
             Console.WriteLine("Input name for the employee");
-            name = Console.ReadLine();
+            string name = Console.ReadLine();
             Console.WriteLine("Input salary for the employee");
-            salary =Convert.ToInt32(Console.ReadLine());
+            int salary = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Input the date the employee has joined the company");
-            date = Console.ReadLine();
-            
-            //adding skills to the employees object
-            Console.WriteLine("How many skills does the employee has (MAX 10");
-            int num_skills = Convert.ToInt32(Console.ReadLine());
-            for (int y=0; y<=num_skills; y++)
-            {
-                y++;
-                Console.WriteLine("Input the skill");
-                String skill = Console.ReadLine();
-                skills[y]=skill;
-            }
-            Employee obj1 = new Employee(name, salary, date, skills);
+            string date = Console.ReadLine();
+
+            //gathering information for the employee's profile
             Console.WriteLine("Input username for the employee");
-            String username = Console.ReadLine();
-            Console.WriteLine("Input password for the employee");
-            String password = Console.ReadLine();
+            string username = Console.ReadLine();
             Console.WriteLine("Input email for the employee");
-            String email = Console.ReadLine();
+            string email = Console.ReadLine();
+            Console.WriteLine("Input password for the employee");
+            string password = Console.ReadLine();
 
-            Profile str1 = Profile.Create(username, password, email);
-            Console.WriteLine("_________________________________________");
-            obj1.Get_name();
-            obj1.Get_salary();
-            obj1.Get_skills();
-            Console.WriteLine("_________________________________________");
-            obj1.ToString();
-            Console.WriteLine("How much would the pay raise be?");
-            int raise = Convert.ToInt32(Console.ReadLine());
-            obj1.Pay_raise(raise);
-            obj1.Get_salary();
-            obj1.ToString();
-            Console.WriteLine("_________________________________________________");
-            Console.WriteLine(str1.username);
-            Console.WriteLine(str1.email);
-            Console.WriteLine("Do you want to change tha password\nIf yes type 'yes'");
-            string change = Console.ReadLine();
-            if (change.ToLower() == "yes")
+
+            //new Employee object
+            Employee emp1 = new Employee(name, salary, date, new Profile(username, email, email));
+            Console.WriteLine("How many skills are you going to add? ");
+            int num_skills = Convert.ToInt32(Console.ReadLine());
+            for( int i=0; i<=num_skills; i++)
             {
-                Console.WriteLine("Input your OLD password");
-                String old = Console.ReadLine();
-                Console.WriteLine("Input your NEW password");
-                String new_pass = Console.ReadLine();
-                str1.Change_password(old, new_pass);
 
+                Console.WriteLine($"Input skill #{i}");
+                string skill = Console.ReadLine();
+                emp1.AddSkill(skill);
             }
-            str1.ToString();
+            
+
+            Console.WriteLine("_________________________________________\n\n");
+            emp1.Get_name();
+            emp1.Get_salary();
+            emp1.Get_date_joined();
+            emp1.Get_skills();
+
+            Console.WriteLine("_________________________________________\n\n");
+            emp1.ToString();
 
 
+            Console.WriteLine("Do you want to alter some skill\nIf yes type 'yes'");
+            String alter_skill = Console.ReadLine();
+            if (alter_skill.ToLower() == "yes")
+            {
+                emp1.Get_skills();
+                Console.WriteLine("Input the index of the skill you want to change");
+                int index = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Input the skill you want to change");
+                String new_skill = Console.ReadLine();
+                emp1.Alter_skills(index, new_skill);
+            }
+
+            //Console.WriteLine("Do you want to remove some skill\nIf yes type 'yes'");
+            //String remove_skill = Console.ReadLine();
+            // (remove_skill.ToLower() == "yes")
+            //{
+            // emp1.Get_skills();
+            // Console.WriteLine("Input the index of the skill you want to remove");
+            // String remove_skill = Console.ReadLine();
+
+            //emp1.Remove_skills(remove_skill);
+            //}
+
+            Console.WriteLine("Do you want to chenge the profile's password\nIf yes type 'yes'");
+            String chane_password = Console.ReadLine();
+            if (chane_password.ToLower() == "yes")
+            {
+               
+                Console.WriteLine("Input the OLD password");
+                String old_pass = Console.ReadLine();
+                Console.WriteLine("Input the NEW password");
+                String new_pass = Console.ReadLine();
+                emp1.ChangePassword(old_pass, new_pass);
+            }
             Console.ReadLine();
         }
-
     }
 }
 
