@@ -1,0 +1,7 @@
+C:\Users\risto\source\repos\EmployeeManagement\bin\Debug\EmployeeManagement.exe.config
+C:\Users\risto\source\repos\EmployeeManagement\bin\Debug\EmployeeManagement.exe
+C:\Users\risto\source\repos\EmployeeManagement\bin\Debug\EmployeeManagement.pdb
+C:\Users\risto\source\repos\EmployeeManagement\obj\Debug\EmployeeManagement.csprojAssemblyReference.cache
+C:\Users\risto\source\repos\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CoreCompileInputs.cache
+C:\Users\risto\source\repos\EmployeeManagement\obj\Debug\EmployeeManagement.exe
+C:\Users\risto\source\repos\EmployeeManagement\obj\Debug\EmployeeManagement.pdb
