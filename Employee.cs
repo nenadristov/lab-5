@@ -17,13 +17,15 @@ namespace EmployeeManagement
 
         private Profile profile;
 
-        public Employee(string name, int salary, string date_joined, Profile profile)
+        public Employee(string name,   string date_joined, Profile profile, int salary = 10000, int total_skills = 10)
         {
             this.name = name;
             this.salary = salary;
             this.date_joined = date_joined;
+            this.skills = new string[total_skills];
             this.profile = profile;
         }
+        
 
         //printing the name
         public void Get_name()
@@ -49,18 +51,31 @@ namespace EmployeeManagement
             salary += raise;
          }
 
-         //printing the  skills
-         public void Get_skills()
-         {
+        //printing the  skills
+        public void Get_skills()
+        {
             Console.WriteLine("This are the skills:");
             foreach (String i in skills)
             {
                 Console.WriteLine(i);
             }
-         }
+        }
 
-         //printing all the information with ToString()
-         public override string ToString()
+        public void AddSkills(params string[] new_skills)
+        {
+            if (num_skills + new_skills.Length >= skills.Length)
+            {
+                Console.WriteLine($"Error, cannot add {new_skills.Length} skills.");
+            }
+            else
+            {
+                foreach (string skill in new_skills)
+                    AddSkill(skill);
+            }
+        }
+
+        //printing all the information with ToString()
+        public override string ToString()
          {
             return $"Name: {name}\n Salary: {salary}\n Date joined {date_joined}\n Skills: {skills}";
          }

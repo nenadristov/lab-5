@@ -32,15 +32,17 @@ namespace EmployeeManagement
 
 
             //new Employee object
-            Employee emp1 = new Employee(name, salary, date, new Profile(username, email, email));
+            Employee emp1 = new Employee(name,  date, new Profile(username, email, email), salary);
             Console.WriteLine("How many skills are you going to add? ");
             int num_skills = Convert.ToInt32(Console.ReadLine());
             for( int i=0; i<=num_skills; i++)
             {
-
+                int y=i+i;
                 Console.WriteLine($"Input skill #{i}");
-                string skill = Console.ReadLine();
-                emp1.AddSkill(skill);
+                string[]  skill = new string[10];
+                skill[i]=Console.ReadLine();
+                emp1.AddSkills(skill);
+                ;
             }
             
 
@@ -88,6 +90,7 @@ namespace EmployeeManagement
                 String new_pass = Console.ReadLine();
                 emp1.ChangePassword(old_pass, new_pass);
             }
+            
             Console.ReadLine();
         }
     }
