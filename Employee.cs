@@ -13,24 +13,46 @@ namespace EmployeeManagement
         private int salary, num_skills = 0;
         private string date_joined;
         private String[] skills = new String[10];
+        static int num_employee;
+        static int min_salary=20000;
+
+        public static void Change_min(int x)
+        {
+            min_salary=x;
+        }
+        public static void print_min()
+        {
+            Console.WriteLine($"Minimum salary is set to {min_salary}\n\n");
+            
+        }
 
 
         private Profile profile;
 
-        public Employee(string name,   string date_joined, Profile profile, int salary = 10000, int total_skills = 10)
+        public Employee(string name,   string date_joined, Profile profile, int salary =20000,  int total_skills = 10)
         {
             this.name = name;
-            this.salary = salary;
+            if(salary>=min_salary)
+                this.salary = salary;
+            else
+                Console.WriteLine("Salary too low");
             this.date_joined = date_joined;
             this.skills = new string[total_skills];
             this.profile = profile;
+            num_employee++;
+        }
+
+        ~Employee()
+        {
+            num_employee--;
+            Console.WriteLine("The employee has been destroyed\n\n");
         }
         
 
         //printing the name
-        public void Get_name()
+        public string Get_name()
         {
-            Console.WriteLine(name);
+            return(name);
         }
 
             //printing the salary

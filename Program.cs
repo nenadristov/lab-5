@@ -14,83 +14,44 @@ namespace EmployeeManagement
         
         static void Main(string[] args)
         {
-            //gathering information for the employee
-            Console.WriteLine("Input name for the employee");
-            string name = Console.ReadLine();
-            Console.WriteLine("Input salary for the employee");
-            int salary = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Input the date the employee has joined the company");
-            string date = Console.ReadLine();
+            Employee.Change_min(70000);
+            Employee.print_min();
+            //creating employee objects for the employee
+            Employee emp1 = new Employee("John Doe", "01/01/2001", new Profile("jonnyDoe", "jonny@gmail.com", "qwerty"), 70001);
+            Employee emp2 = new Employee("Jane Doe", "01/01/2002", new Profile("janeDoe", "jane@hotmail.com", "12345678"), 70002);
 
-            //gathering information for the employee's profile
-            Console.WriteLine("Input username for the employee");
-            string username = Console.ReadLine();
-            Console.WriteLine("Input email for the employee");
-            string email = Console.ReadLine();
-            Console.WriteLine("Input password for the employee");
-            string password = Console.ReadLine();
+            //performance
+            PerformanceLevel performance1 = new PerformanceLevel();
+            performance1 += 4;
+            performance1 += 5;
 
+            //employee 1 performance
+            performance1.ToString();
 
-            //new Employee object
-            Employee emp1 = new Employee(name,  date, new Profile(username, email, email), salary);
-            Console.WriteLine("How many skills are you going to add? ");
-            int num_skills = Convert.ToInt32(Console.ReadLine());
-            for( int i=0; i<=num_skills; i++)
-            {
-                int y=i+i;
-                Console.WriteLine($"Input skill #{i}");
-                string[]  skill = new string[10];
-                skill[i]=Console.ReadLine();
-                emp1.AddSkills(skill);
-                ;
-            }
-            
+            PerformanceLevel performance2 = new PerformanceLevel();
+            performance2 += 2;
+            performance2 += 2;
 
-            Console.WriteLine("_________________________________________\n\n");
-            emp1.Get_name();
-            emp1.Get_salary();
-            emp1.Get_date_joined();
-            emp1.Get_skills();
+            //employee 2 performance
+            performance2.ToString();
 
-            Console.WriteLine("_________________________________________\n\n");
-            emp1.ToString();
+            //operators
+            Console.WriteLine($"{emp1.Get_name()}== {emp2.Get_name()} {performance1==performance2}");
+            Console.WriteLine($"{emp1.Get_name()} != {emp2.Get_name()}? {performance1!= performance2}");
+            Console.WriteLine($"{emp1.Get_name()} == 3?  {performance1 == 3}" );
+            Console.WriteLine($"{emp1.Get_name()} != 4?  {performance2 != 4}");
+            Console.WriteLine($"{emp1.Get_name()} > {emp2.Get_name()}?  {performance1 > performance2}");
+            Console.WriteLine($"{emp1.Get_name()} < {emp2.Get_name()}?  {performance1 < performance2}\n\n");
+
+            //phone number
+
+            Telephone_number emp1_tel = new Telephone_number("389", "078-223-305");
 
 
-            Console.WriteLine("Do you want to alter some skill\nIf yes type 'yes'");
-            String alter_skill = Console.ReadLine();
-            if (alter_skill.ToLower() == "yes")
-            {
-                emp1.Get_skills();
-                Console.WriteLine("Input the index of the skill you want to change");
-                int index = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Input the skill you want to change");
-                String new_skill = Console.ReadLine();
-                emp1.Alter_skills(index, new_skill);
-            }
+            emp1_tel.ToString();
 
-            //Console.WriteLine("Do you want to remove some skill\nIf yes type 'yes'");
-            //String remove_skill = Console.ReadLine();
-            // (remove_skill.ToLower() == "yes")
-            //{
-            // emp1.Get_skills();
-            // Console.WriteLine("Input the index of the skill you want to remove");
-            // String remove_skill = Console.ReadLine();
 
-            //emp1.Remove_skills(remove_skill);
-            //}
 
-            Console.WriteLine("Do you want to chenge the profile's password\nIf yes type 'yes'");
-            String chane_password = Console.ReadLine();
-            if (chane_password.ToLower() == "yes")
-            {
-               
-                Console.WriteLine("Input the OLD password");
-                String old_pass = Console.ReadLine();
-                Console.WriteLine("Input the NEW password");
-                String new_pass = Console.ReadLine();
-                emp1.ChangePassword(old_pass, new_pass);
-            }
-            
             Console.ReadLine();
         }
     }

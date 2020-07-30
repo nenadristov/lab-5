@@ -35,6 +35,7 @@ namespace EmployeeManagement
 
         public override string ToString()
         {
+            Console.WriteLine($"User name: {username}\ne-mail : {emailAddress}\nPassword: CLASSIFIED");
             return $"User name: {username}\ne-mail : {emailAddress}\nPassword: CLASSIFIED";
         }
     }
